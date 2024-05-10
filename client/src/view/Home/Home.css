@@ -1,0 +1,25 @@
+.Heading{
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.form-container{
+    padding: 10px;
+    border: 1px solid black;
+    margin: 15px;
+    display: inline;
+}
+
+.FirstName{
+    margin: 2px;
+    
+    
+}
+label{
+    font-family: 'Times New Roman', Times, serif;
+}
+.otp{
+    cursor: not-allowed;
+}
