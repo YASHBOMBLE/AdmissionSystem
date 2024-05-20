@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import validator from 'validator'
 import User from './models/User.js';
+import Personal from './models/Personal.js';
+import Preeducation from './models/Preeducation.js';
 const app = express();
 app.use(express.json());
 dotenv.config();
@@ -21,7 +23,7 @@ app.post('/signup', async (req, res) => {
 
     // validation to check if all fields are filled ends here
 
-    
+
     if (!validator.isMobilePhone(phone)) {
         return res.json({
             success: false,
@@ -72,7 +74,7 @@ app.post('/signup', async (req, res) => {
         success: true,
         message: "User created successfully",
         data: savedUser
-    }) 
+    })
 
 })
 
@@ -106,6 +108,51 @@ app.post('/login', async (req, res) => {
     }
 })
 
+//personal detail 
+app.post('/personal', async (req, res) => {
+    const {fname,mname,lname,mono,address,gender} = req.body;
+    const personal = new Personal({
+        fname: fname,
+        mname: mname,
+        lname: lname,
+        mono: mono,
+        address: address,
+        gender: gender
+    })
+
+    const savedDetail = await personal.save();
+    res.json({
+        success: true,
+        message: "Detail Saved successfully",
+        data: savedDetail
+    })
+
+})
+
+//previous education detals
+app.post('/preeducation',async(req,res)=>{
+    const {tenyeop,tenmarks,tenboard,twelthyeop,twelthmarks,board,graduationyeop,graduationmarks,university} = req.body;
+    const preeducation = new Preeducation({
+        tenyeop : tenyeop,
+        tenmarks : tenmarks,
+        tenboard : tenboard,
+        twelthyeop : twelthyeop,
+        twelthmarks : twelthmarks,
+        board : board,
+        graduationyeop : graduationyeop,
+        graduationmarks : graduationmarks,
+        university : university
+    })
+
+    const savedDetail = await preeducation.save();
+    res.json({
+        success: true,
+        message: "Data saved successfully",
+        data: savedDetail
+    })
+})
+
+//
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 })

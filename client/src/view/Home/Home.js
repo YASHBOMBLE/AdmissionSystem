@@ -58,6 +58,19 @@ function Home() {
             <input type='text' id='address' placeholder='Address' />
             </div>
           </div>
+
+          <div className='row'>
+            <div className='col-md-6'>
+              <label for='file-input' className='mt-3'>Upload Picture :</label><br />
+              <div className='ms-5'>
+              <input type="file" id="file-input" name="ImageStyle"/>
+              </div>
+            
+            </div>
+            <div className='col-md-6'>
+
+            </div>
+          </div>
           <div>
             <button >Submit</button>
           </div>
